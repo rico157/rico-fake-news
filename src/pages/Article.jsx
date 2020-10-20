@@ -1,4 +1,6 @@
+import { Avatar } from '@material-ui/core';
 import React, { Component } from 'react';
+import { Author } from '../components/common/Author';
 import Loader from '../components/common/Loader';
 import { getArticlesById } from '../utils/axios';
 import './Article.css';
@@ -15,7 +17,6 @@ export default class Article extends Component {
       .then(({ data: { article } }) => {
         this.setState({ article, isLoading: false });
       })
-
       .catch(({ response }) => {
         this.setState({
           errorData: {
@@ -26,6 +27,8 @@ export default class Article extends Component {
           isLoading: false
         });
       });
+
+    // Axios.get(`https://avatars.dicebear.com/api/avataaars/${this.state.article.author}.svg`).then(({data}) => )
   }
   render() {
     const { title, author, body, created_at } = this.state.article;
@@ -36,8 +39,9 @@ export default class Article extends Component {
       <div className="Article">
         <h2>{title}</h2>
         <h5>Created at: {created_at}</h5>
-        <h5>By: {author}</h5>
+
         <p>{body}</p>
+        <Author author={author} />
       </div>
     );
   }

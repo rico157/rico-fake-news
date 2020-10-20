@@ -1,6 +1,25 @@
-.ArticleCard {
-    border-style: solid;
+.Article-List-Card {
     border-color: yellow;
     margin: 10px;
-    padding: 10px
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Article-List-Content {
+    text-decoration: none;
+}
+
+
+.Articles-Card-Author {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.Badge {
+    margin-left: 15px;
 }

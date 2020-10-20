@@ -10,7 +10,6 @@ export default class Articles extends Component {
   state = {
     articles: [],
     isLoading: true,
-    sort_by: '',
     errorData: null
   };
 
@@ -51,8 +50,13 @@ export default class Articles extends Component {
         <h2>Many articles</h2>
         {articles.map((article) => {
           const { article_id } = article;
+
           return (
-            <Link to={`/articles/${article_id}`} key={article_id}>
+            <Link
+              className="Articles-Link"
+              to={`/articles/${article_id}`}
+              key={article_id}
+            >
               <ArticleCard {...article} />
             </Link>
           );
