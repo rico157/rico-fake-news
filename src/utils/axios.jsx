@@ -1,11 +1,13 @@
 import axios from 'axios';
 
+const instance = axios.create({
+  baseURL: 'https://rico-nc-api.herokuapp.com/api'
+});
+
 export const getArticles = () => {
-  return axios.get('https://rico-nc-api.herokuapp.com/api/articles');
+  return instance.get('/articles');
 };
 
 export const getArticlesById = (article_id) => {
-  return axios.get(
-    `https://rico-nc-api.herokuapp.com/api/articles/${article_id}`
-  );
+  return instance.get(`/articles/${article_id}`);
 };
