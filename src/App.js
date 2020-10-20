@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Header />
       <Router>
-        <Articles path="/" />
-        <Article path="/articles/:article_id" />
+        <Articles path="/rico-fake-news/" />
+        <Article path="/rico-fake-news/articles/:article_id" />
       </Router>
       <Footer />
     </div>

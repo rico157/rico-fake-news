@@ -25,7 +25,10 @@ export default class Articles extends Component {
         {articles.map((article) => {
           const { article_id } = article;
           return (
-            <Link to={`/articles/${article_id}`} key={article_id}>
+            <Link
+              to={`/rico-fake-news/articles/${article_id}`}
+              key={article_id}
+            >
               <ArticleCard {...article} />
             </Link>
           );

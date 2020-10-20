@@ -6,7 +6,7 @@ export default class Nav extends Component {
     return (
       <nav className="Nav-Header">
         <ul>
-          <Link to="/">
+          <Link to="/rico-fake-news/">
             <li>Home</li>
           </Link>
           <li>Search</li>
