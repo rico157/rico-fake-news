@@ -7,7 +7,7 @@ export default class Header extends Component {
   render() {
     return (
       <header className="Header">
-        <Link to="/rico-fake-news/">
+        <Link to="/">
           <h1>Rico NC News!</h1>
         </Link>
         <Nav />

@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <Header />
       <Router>
-        <Articles path="/rico-fake-news/" />
-        <Article path="/rico-fake-news/articles/:article_id" />
+        <Articles path="/" />
+        <Article path="/articles/:article_id" />
         <ErrorPage default status="404" msg="Page not found" />
       </Router>
       <Footer />
