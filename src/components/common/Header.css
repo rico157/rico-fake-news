@@ -1,0 +1,24 @@
+.Header {
+    border-style: solid;
+    border-color: teal;
+    margin: 10px;
+
+}
+
+.Nav-Header {
+    border-style: solid;
+    border-color: rgb(0, 172, 172);
+    margin: 10px;
+
+
+
+}
+
+.Nav-Header ul {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly;
+}

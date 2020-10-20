@@ -1,15 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Main from './pages/Main';
+import Articles from './pages/Articles';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
+import { Router } from '@reach/router';
+import Article from './pages/Article';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Main />
-      </header>
+      <Header />
+      <Router>
+        <Articles path="/" />
+        <Article path="/articles/:article_id" />
+      </Router>
+      <Footer />
     </div>
   );
 }
