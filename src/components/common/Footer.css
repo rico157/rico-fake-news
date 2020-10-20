@@ -1,15 +1,17 @@
 footer {
     position: fixed;
     bottom: 0px;
-    text-align: center;
     width: 100%;
-    background-color: rgba(0, 128, 128, 0.384);
+    background-color: rgb(162, 226, 226);
+    height: 55px;
+    display: flex;
+    justify-content: center;
 }
 
-footer span {
-
-    font-size: 40px;
-    background-color: rgb(177, 177, 177);
+footer img {
+    width: 70px;
+    position: absolute;
+    bottom: 5px;
+    background-color: rgb(0, 250, 250);
     border-radius: 50%;
-    padding: 10px;
 }
