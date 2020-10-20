@@ -11,8 +11,10 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <Router>
         <Articles path="/" />
+        <Articles path="/topic/:topic_id" />
         <Article path="/articles/:article_id" />
         <ErrorPage default status="404" msg="Page not found" />
       </Router>
