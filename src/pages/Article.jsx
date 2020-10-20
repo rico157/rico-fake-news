@@ -1,4 +1,3 @@
-import { Avatar } from '@material-ui/core';
 import React, { Component } from 'react';
 import { Author } from '../components/common/Author';
 import Loader from '../components/common/Loader';

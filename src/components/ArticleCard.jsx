@@ -5,25 +5,15 @@ import {
   Button,
   Card,
   CardActions,
-  CardContent,
-  Typography
+  CardContent
 } from '@material-ui/core';
 import { Author } from './common/Author';
 
 export default function ArticleCard(props) {
-  const {
-    article_id,
-    title,
-    author,
-    topic,
-    created_at,
-    comment_count,
-    votes
-  } = props;
+  const { title, author, topic, created_at, comment_count } = props;
 
-  console.log(props);
   return (
-    <Card raised="true" className="Article-List-Card">
+    <Card raised={true} className="Article-List-Card">
       <CardContent className="Article-List-Content">
         <p color="textSecondary">{topic}</p>
         <h2>{title}</h2>
