@@ -10,7 +10,13 @@ export default class Nav extends Component {
             <li>Home</li>
           </Link>
           <li>Search</li>
-          <li>Slug</li>
+          <li>
+            <select name="sort by">
+              <option value="0">Newest</option>
+              <option value="1">Title</option>
+              <option value="2">Author</option>
+            </select>
+          </li>
         </ul>
       </nav>
     );
