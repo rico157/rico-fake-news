@@ -28,15 +28,7 @@ export default class Article extends Component {
       });
   }
   render() {
-    const {
-      title,
-      author,
-      body,
-      comment_count,
-      created_at,
-      topic,
-      votes
-    } = this.state.article;
+    const { title, author, body, created_at } = this.state.article;
     if (this.state.isLoading) return <Loader />;
     if (this.state.errorData) return <ErrorPage {...this.state.errorData} />;
 
