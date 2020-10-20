@@ -13,6 +13,7 @@
     "react-dom": "^16.14.0",
     "react-scripts": "3.4.3"
   },
+  "homepage": "https://rico-fake-news.netlify.app/",
   "scripts": {
 
     "start": "react-scripts start",
