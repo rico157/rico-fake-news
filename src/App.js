@@ -5,6 +5,7 @@ import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import { Router } from '@reach/router';
 import Article from './pages/Article';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Articles path="/rico-fake-news/" />
         <Article path="/rico-fake-news/articles/:article_id" />
+        <ErrorPage default status="404" msg="Page not found" />
       </Router>
       <Footer />
     </div>
