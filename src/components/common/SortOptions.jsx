@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from '@material-ui/core';
 import { Link } from '@reach/router';
-import React, { Component } from 'react';
+import React from 'react';
 
 export default function SortOptions(props) {
   const { created_at, comments_count, votes } = props.variant;
