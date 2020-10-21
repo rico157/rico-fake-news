@@ -3,6 +3,7 @@ import Comments from '../components/Comments';
 import { Author } from '../components/common/Author';
 import Loader from '../components/common/Loader';
 import { getArticlesById } from '../utils/axios';
+import { formatDate } from '../utils/utils';
 import './Article.css';
 import ErrorPage from './ErrorPage';
 
@@ -39,11 +40,11 @@ export default class Article extends Component {
 
     return (
       <div className="Article">
+        <Author author={author} />
+        <h5>{formatDate(created_at)}</h5>
         <h2>{title}</h2>
-        <h5>Created at: {created_at}</h5>
 
         <p>{body}</p>
-        <Author author={author} />
         <Comments article_id={article_id} />
       </div>
     );

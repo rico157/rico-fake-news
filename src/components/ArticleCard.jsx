@@ -9,6 +9,7 @@ import {
   CardContent
 } from '@material-ui/core';
 import { Author } from './common/Author';
+import { formatDate } from '../utils/utils';
 
 export default function ArticleCard(props) {
   const { article_id, title, author, topic, created_at, comment_count } = props;
@@ -20,7 +21,7 @@ export default function ArticleCard(props) {
         <Link className="Articles-Link" to={`/articles/${article_id}`}>
           <h2>{title}</h2>
         </Link>
-        <p>{Date(created_at)}</p>
+        <p>{formatDate(created_at)}</p>
         <div className="Articles-Card-Author" color="textSecondary">
           <Author author={author} />
         </div>

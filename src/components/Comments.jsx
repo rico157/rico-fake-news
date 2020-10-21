@@ -5,6 +5,7 @@ import SendIcon from '@material-ui/icons/Send';
 import React, { Component } from 'react';
 import { getCommentsByArticle, postComment } from '../utils/axios';
 import Loader from './common/Loader';
+import { formatDate } from '../utils/utils';
 
 export default class Comments extends Component {
   state = {
@@ -65,7 +66,7 @@ export default class Comments extends Component {
             <div key={comment_id} className="comment">
               <h3>{author}</h3>
               <p>{body}</p>
-              <p>{created_at}</p>
+              <p>{formatDate(created_at)}</p>
             </div>
           );
         })}
