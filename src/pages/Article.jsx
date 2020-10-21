@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Comments from '../components/Comments';
 import { Author } from '../components/common/Author';
 import Loader from '../components/common/Loader';
 import { getArticlesById } from '../utils/axios';
@@ -16,12 +17,14 @@ export default class Article extends Component {
       .then(({ data: { article } }) => {
         this.setState({ article, isLoading: false });
       })
-      .catch(({ response }) => {
+      .catch((err) => {
+        console.dir(err);
+        const { status, data, statusText } = err.response;
         this.setState({
           errorData: {
-            status: response.status,
-            msg: response.data.msg,
-            statusText: response.statusText
+            status: status,
+            msg: data.msg,
+            statusText: statusText
           },
           isLoading: false
         });
@@ -30,7 +33,7 @@ export default class Article extends Component {
     // Axios.get(`https://avatars.dicebear.com/api/avataaars/${this.state.article.author}.svg`).then(({data}) => )
   }
   render() {
-    const { title, author, body, created_at } = this.state.article;
+    const { article_id, title, author, body, created_at } = this.state.article;
     if (this.state.isLoading) return <Loader />;
     if (this.state.errorData) return <ErrorPage {...this.state.errorData} />;
 
@@ -41,6 +44,7 @@ export default class Article extends Component {
 
         <p>{body}</p>
         <Author author={author} />
+        <Comments article_id={article_id} />
       </div>
     );
   }

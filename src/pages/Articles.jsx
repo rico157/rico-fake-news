@@ -1,4 +1,3 @@
-import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import { getArticles } from '../utils/axios';
 import ArticleCard from '../components/ArticleCard';
@@ -50,16 +49,7 @@ export default class Articles extends Component {
         <h2>Many articles</h2>
         {articles.map((article) => {
           const { article_id } = article;
-
-          return (
-            <Link
-              className="Articles-Link"
-              to={`/articles/${article_id}`}
-              key={article_id}
-            >
-              <ArticleCard {...article} />
-            </Link>
-          );
+          return <ArticleCard key={article_id} {...article} />;
         })}
       </div>
     );

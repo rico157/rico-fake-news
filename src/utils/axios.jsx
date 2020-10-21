@@ -19,3 +19,7 @@ export const getArticlesById = (article_id) => {
 export const getTopics = () => {
   return instance.get('/topics');
 };
+
+export const getCommentsByArticle = (article_id) => {
+  return instance.get(`/articles/${article_id}/comments`);
+};
