@@ -9,7 +9,7 @@
  - date created
  - comment_count
  - votes
-- [ ] post a new comment to an existing article (as a default logged in user. e.g. 'jessjelly').
+- [x] post a new comment to an existing article (as a default logged in user. e.g. 'jessjelly').
 - [ ] delete my own comments (as a default logged in user. e.g. 'jessjelly').
 - [ ] vote on an article and immediately see the change.
 - [ ] vote on a comment and immediately see the change.

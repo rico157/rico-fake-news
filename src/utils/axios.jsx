@@ -26,3 +26,10 @@ export const getTopics = () => {
 export const getCommentsByArticle = (article_id) => {
   return instance.get(`/articles/${article_id}/comments`);
 };
+
+export const postComment = (username, article_id, body) => {
+  return instance.post(`/articles/${article_id}/comments`, {
+    body,
+    username
+  });
+};
