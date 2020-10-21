@@ -4,18 +4,26 @@ import ArticleCard from '../components/ArticleCard';
 import Loader from '../components/common/Loader';
 import './Articles.css';
 import ErrorPage from './ErrorPage';
+import { parse } from 'query-string';
 
 export default class Articles extends Component {
   state = {
     articles: [],
     isLoading: true,
-    errorData: null
+    errorData: null,
+    params: {}
   };
 
   componentDidMount() {
-    getArticles(this.props.topic_id)
+    const searchParams = parse(this.props.location.search);
+
+    getArticles({ ...searchParams })
       .then(({ data: { articles } }) => {
-        this.setState({ articles, isLoading: false });
+        this.setState({
+          articles,
+          isLoading: false,
+          params: { ...searchParams }
+        });
       })
       .catch(({ response: { status, data, statusText } }) =>
         this.setState({
@@ -25,9 +33,14 @@ export default class Articles extends Component {
       );
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.topic_id !== this.props.topic_id) {
-      getArticles(this.props.topic_id)
+  componentDidUpdate(prevProps, prevState) {
+    const currentParams = parse(this.props.location.search);
+    const prevParams = parse(prevProps.location.search);
+    if (
+      prevParams.sort_by !== currentParams.sort_by ||
+      prevParams.topic !== currentParams.topic
+    ) {
+      getArticles({ ...currentParams })
         .then(({ data: { articles } }) => {
           this.setState({ articles, isLoading: false });
         })

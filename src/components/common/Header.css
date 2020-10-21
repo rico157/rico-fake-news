@@ -5,9 +5,12 @@
 
 }
 
-.Nav-Header {
+
+
+
+.TopicsSelector {
     border-style: solid;
-    border-color: rgb(0, 172, 172);
+    border-color: rgb(0, 213, 199);
     margin: 10px;
     padding: 10px;
 
@@ -25,4 +28,12 @@
 .Topic-Item {
     text-decoration: none;
     text-transform: capitalize;
+}
+
+
+.SortOptions {
+    border-style: solid;
+    border-color: rgb(0, 213, 199);
+    margin: 10px;
+    padding: 10px;
 }

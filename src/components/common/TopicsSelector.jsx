@@ -4,9 +4,8 @@ import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import { getTopics } from '../../utils/axios';
 import Loader from './Loader';
 
-export default class Nav extends Component {
+export default class TopicsSelector extends Component {
   state = {
-    topic: 'home',
     topicList: [],
     isLoading: true
   };
@@ -18,19 +17,19 @@ export default class Nav extends Component {
   }
 
   handleChange = (event) => {
-    this.setState({ topic: event.target.value });
+    this.props.updateTopic(event.target.value);
   };
 
   render() {
     if (this.state.isLoading) return <Loader />;
     return (
-      <nav className="Nav-Header">
+      <div className="TopicsSelector">
         <FormControl variant="outlined" className="Topic-Menu">
           <InputLabel id="Topic-Input-Select">Topics</InputLabel>
           <Select
             labelId="Topic-Input-Select"
             id="Topic-Select"
-            value={this.state.topic}
+            value={this.props.topic}
             onChange={this.handleChange}
             label="Topics"
           >
@@ -43,17 +42,19 @@ export default class Nav extends Component {
                 <MenuItem
                   className="Topic-Item"
                   component={Link}
-                  to={`/topic/${topic.slug}`}
+                  to={`/articles?topic=${topic.slug}`}
                   key={topic.slug}
                   value={topic.slug}
                 >
-                  {topic.slug}
+                  <span style={{ textTransform: 'capitalize' }}>
+                    {topic.slug}
+                  </span>
                 </MenuItem>
               );
             })}
           </Select>
         </FormControl>
-      </nav>
+      </div>
     );
   }
 }
