@@ -5,13 +5,32 @@ import Loader from '../components/common/Loader';
 import './Articles.css';
 import ErrorPage from './ErrorPage';
 import { parse } from 'query-string';
+import TopicsSelector from '../components/common/TopicsSelector';
+import SortOptions from '../components/common/SortOptions';
 
 export default class Articles extends Component {
   state = {
     articles: [],
     isLoading: true,
     errorData: null,
-    params: {}
+    params: {},
+    currentTopic: 'home',
+    currentVariant: { created_at: 'contained' }
+  };
+
+  updateTopic = (topic) => {
+    if (topic === 'home') {
+      this.setState({
+        currentTopic: 'home',
+        currentVariant: { created_at: 'contained' }
+      });
+    } else {
+      this.setState({ currentTopic: topic });
+    }
+  };
+
+  updateVariant = (variant) => {
+    this.setState({ currentVariant: variant });
   };
 
   componentDidMount() {
@@ -59,7 +78,15 @@ export default class Articles extends Component {
 
     return (
       <div className="Articles">
-        <h2>Many articles</h2>
+        <TopicsSelector
+          updateTopic={this.updateTopic}
+          topic={this.state.currentTopic}
+        />
+        <SortOptions
+          updateVariant={this.updateVariant}
+          variant={this.state.currentVariant}
+          topic={this.state.currentTopic}
+        />
         {articles.map((article) => {
           const { article_id } = article;
           return <ArticleCard key={article_id} {...article} />;
