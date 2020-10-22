@@ -6,6 +6,7 @@ import Footer from './components/common/Footer';
 import { Router } from '@reach/router';
 import Article from './pages/Article';
 import ErrorPage from './pages/ErrorPage';
+import Comments from './components/Comments';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Articles path="/topic/:topic_id" />
         <Articles path="/articles" />
         <Article path="/articles/:article_id" />
+        <Comments path="/articles/:article_id/comments" />
         <ErrorPage default status="404" msg="Page not found" />
       </Router>
       <Footer />

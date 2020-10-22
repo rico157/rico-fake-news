@@ -1,8 +1,8 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
-import { getTopics } from '../../utils/axios';
-import Loader from './Loader';
+import { getTopics } from '../utils/axios';
+import Loader from './common/Loader';
 
 export default class TopicsSelector extends Component {
   state = {

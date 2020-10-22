@@ -5,8 +5,8 @@ import Loader from '../components/common/Loader';
 import './Articles.css';
 import ErrorPage from './ErrorPage';
 import { parse } from 'query-string';
-import TopicsSelector from '../components/common/TopicsSelector';
-import SortOptions from '../components/common/SortOptions';
+import TopicsSelector from '../components/TopicsSelector';
+import SortOptions from '../components/SortOptions';
 
 export default class Articles extends Component {
   state = {

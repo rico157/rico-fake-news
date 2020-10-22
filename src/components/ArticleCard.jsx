@@ -27,14 +27,19 @@ export default function ArticleCard(props) {
         </div>
       </CardContent>
       <CardActions>
-        <Button color="secondary" variant="contained">
-          Comments{' '}
-          <Badge
-            className="Badge"
-            badgeContent={comment_count}
-            color="primary"
-          />
-        </Button>
+        <Link
+          className="Comment_button_Link"
+          to={`/articles/${article_id}/comments`}
+        >
+          <Button color="secondary" variant="contained">
+            Comments{' '}
+            <Badge
+              className="Badge"
+              badgeContent={comment_count}
+              color="primary"
+            />
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );
