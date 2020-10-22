@@ -4,13 +4,19 @@ const instance = axios.create({
   baseURL: 'https://rico-nc-api.herokuapp.com/api'
 });
 
+// const instance = axios.create({
+//   baseURL: 'http://localhost:9090/api'
+// });
+
 export const getArticles = (queries) => {
   const topic = queries.topic || '';
   const sort_by = queries.sort_by || '';
+  const limit = queries.limit || '5';
   return instance.get('/articles', {
     params: {
       topic,
-      sort_by
+      sort_by,
+      limit
     }
   });
 };
