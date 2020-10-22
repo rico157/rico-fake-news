@@ -10,12 +10,12 @@
  - comment_count
  - votes
 - [x] post a new comment to an existing article (as a default logged in user. e.g. 'jessjelly').
-- [ ] delete my own comments (as a default logged in user. e.g. 'jessjelly').
+- [x] delete my own comments (as a default logged in user 'weegembump').
 - [ ] vote on an article and immediately see the change.
 - [ ] vote on a comment and immediately see the change.
 ---
-- [ ] see a 404 error if I go on a non-existent path/a path for a non-existent article/topic.
-- [ ] see a 400 error if I go on a invalid article ID.
+- [x] see a 404 error if I go on a non-existent path/a path for a non-existent article/topic.
+- [x] see a 400 error if I go on a invalid article ID.
 - [ ] not be allowed to post a comment if I have not filled in all of the form boxes.
 ---
 - [ ] use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).

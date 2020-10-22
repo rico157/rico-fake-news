@@ -33,3 +33,7 @@ export const postComment = (username, article_id, body) => {
     username
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return instance.delete(`/comments/${comment_id}`);
+};

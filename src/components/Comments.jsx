@@ -1,9 +1,13 @@
-import { TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import './Comments.css';
 import SendIcon from '@material-ui/icons/Send';
 import React, { Component } from 'react';
-import { getCommentsByArticle, postComment } from '../utils/axios';
+import {
+  deleteComment,
+  getCommentsByArticle,
+  postComment
+} from '../utils/axios';
 import Loader from './common/Loader';
 import { formatDate } from '../utils/utils';
 
@@ -41,6 +45,18 @@ export default class Comments extends Component {
       .catch((err) => console.dir(err));
   };
 
+  handleDelete = (comment_id) => {
+    deleteComment(comment_id).then(() =>
+      this.setState((prevState) => {
+        const copy = this.state.comments.filter(
+          (comment) => comment.comment_id !== comment_id
+        );
+
+        return { comments: copy };
+      })
+    );
+  };
+
   render() {
     if (this.state.isLoading) return <Loader />;
     return (
@@ -67,6 +83,11 @@ export default class Comments extends Component {
               <h3>{author}</h3>
               <p>{body}</p>
               <p>{formatDate(created_at)}</p>
+              {author === 'weegembump' && (
+                <Button onClick={() => this.handleDelete(comment_id)}>
+                  Delete
+                </Button>
+              )}
             </div>
           );
         })}
