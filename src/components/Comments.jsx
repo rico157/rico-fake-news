@@ -36,10 +36,11 @@ export default class Comments extends Component {
       .then(({ data: { comment } }) => {
         const { author, body, created_at, comment_id } = comment;
         this.setState((prevState) => {
-          const copy = [...prevState.comments];
-          copy.unshift({ author, body, created_at, comment_id });
           return {
-            comments: copy
+            comments: [
+              { author, body, created_at, comment_id },
+              ...prevState.comments
+            ]
           };
         });
       })
