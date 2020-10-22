@@ -10,6 +10,7 @@ import {
 } from '../utils/axios';
 import Loader from './common/Loader';
 import { formatDate } from '../utils/utils';
+import Vote from './common/Vote';
 
 export default class Comments extends Component {
   state = {
@@ -77,7 +78,7 @@ export default class Comments extends Component {
           </IconButton>
         </form>
         {this.state.comments.map((comment) => {
-          const { author, body, created_at, comment_id } = comment;
+          const { author, body, created_at, comment_id, votes } = comment;
           return (
             <div key={comment_id} className="comment">
               <h3>{author}</h3>
@@ -88,6 +89,7 @@ export default class Comments extends Component {
                   Delete
                 </Button>
               )}
+              <Vote votes={votes} comment_id={comment_id} />
             </div>
           );
         })}

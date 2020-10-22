@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Comments from '../components/Comments';
 import { Author } from '../components/common/Author';
 import Loader from '../components/common/Loader';
+import Vote from '../components/common/Vote';
 import { getArticlesById } from '../utils/axios';
 import { formatDate } from '../utils/utils';
 import './Article.css';
@@ -34,7 +35,14 @@ export default class Article extends Component {
     // Axios.get(`https://avatars.dicebear.com/api/avataaars/${this.state.article.author}.svg`).then(({data}) => )
   }
   render() {
-    const { article_id, title, author, body, created_at } = this.state.article;
+    const {
+      article_id,
+      title,
+      author,
+      body,
+      created_at,
+      votes
+    } = this.state.article;
     if (this.state.isLoading) return <Loader />;
     if (this.state.errorData) return <ErrorPage {...this.state.errorData} />;
 
@@ -45,6 +53,7 @@ export default class Article extends Component {
         <h2>{title}</h2>
 
         <p>{body}</p>
+        <Vote votes={votes} article_id={article_id} />
         <Comments article_id={article_id} />
       </div>
     );

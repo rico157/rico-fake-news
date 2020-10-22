@@ -43,3 +43,10 @@ export const postComment = (username, article_id, body) => {
 export const deleteComment = (comment_id) => {
   return instance.delete(`/comments/${comment_id}`);
 };
+
+export const patchVote = (article_id, inc_votes, comment_id) => {
+  if (comment_id) {
+    return instance.patch(`/comments/${comment_id}`, { inc_votes });
+  }
+  return instance.patch(`/articles/${article_id}`, { inc_votes });
+};
