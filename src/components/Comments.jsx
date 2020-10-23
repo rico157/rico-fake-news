@@ -40,6 +40,7 @@ export default class Comments extends Component {
         const { author, body, created_at, comment_id } = comment;
         this.setState((prevState) => {
           return {
+            newComment: '',
             comments: [
               { author, body, created_at, comment_id },
               ...prevState.comments
@@ -64,6 +65,7 @@ export default class Comments extends Component {
 
   render() {
     const { newComment, isLoading, comments } = this.state;
+    const statWriting = newComment === '';
     if (isLoading) return <Loader />;
     return (
       <div className="Comments">
@@ -78,7 +80,11 @@ export default class Comments extends Component {
             value={newComment}
             onChange={this.handleChange}
           />
-          <IconButton aria-label="send" onClick={this.handleSubmit}>
+          <IconButton
+            aria-label="send"
+            onClick={this.handleSubmit}
+            disabled={statWriting}
+          >
             <SendIcon />
           </IconButton>
         </form>
