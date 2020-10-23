@@ -9,29 +9,28 @@ export default class Vote extends Component {
   };
 
   handleVote = (newVote) => {
+    const { article_id, comment_id } = this.props;
     this.setState((prevState) => {
       return {
         userVote: prevState.userVote + newVote
       };
     });
 
-    patchVote(this.props.article_id, newVote, this.props.comment_id).catch(
-      (err) => {
-        this.setState((prevState) => {
-          return {
-            userVote: prevState.userVote - newVote
-          };
-        });
-      }
-    );
+    patchVote(article_id, newVote, comment_id).catch((err) => {
+      this.setState((prevState) => {
+        return {
+          userVote: prevState.userVote - newVote
+        };
+      });
+    });
   };
 
   componentDidMount() {
-    this.setState({ userVote: this.props.votes });
+    const { votes } = this.props;
+    this.setState({ userVote: votes });
   }
 
   render() {
-    console.log(this.state.userVote);
     return (
       <div className="Vote">
         <Button onClick={() => this.handleVote(1)}>Up</Button>

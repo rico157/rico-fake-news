@@ -52,7 +52,7 @@ export default class Articles extends Component {
       );
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const currentParams = parse(this.props.location.search);
     const prevParams = parse(prevProps.location.search);
     if (
@@ -72,20 +72,23 @@ export default class Articles extends Component {
     }
   }
   render() {
-    const { articles, isLoading, errorData } = this.state;
+    const {
+      articles,
+      isLoading,
+      errorData,
+      currentTopic,
+      currentVariant
+    } = this.state;
     if (isLoading) return <Loader />;
     if (errorData) return <ErrorPage {...errorData} />;
 
     return (
       <div className="Articles">
-        <TopicsSelector
-          updateTopic={this.updateTopic}
-          topic={this.state.currentTopic}
-        />
+        <TopicsSelector updateTopic={this.updateTopic} topic={currentTopic} />
         <SortOptions
           updateVariant={this.updateVariant}
-          variant={this.state.currentVariant}
-          topic={this.state.currentTopic}
+          variant={currentVariant}
+          topic={currentTopic}
         />
         {articles.map((article) => {
           const { article_id } = article;

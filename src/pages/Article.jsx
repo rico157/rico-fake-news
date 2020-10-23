@@ -15,7 +15,8 @@ export default class Article extends Component {
     errorData: null
   };
   componentDidMount() {
-    getArticlesById(this.props.article_id)
+    const { article_id } = this.props;
+    getArticlesById(article_id)
       .then(({ data: { article } }) => {
         this.setState({ article, isLoading: false });
       })
@@ -31,20 +32,15 @@ export default class Article extends Component {
           isLoading: false
         });
       });
-
-    // Axios.get(`https://avatars.dicebear.com/api/avataaars/${this.state.article.author}.svg`).then(({data}) => )
   }
   render() {
     const {
-      article_id,
-      title,
-      author,
-      body,
-      created_at,
-      votes
-    } = this.state.article;
-    if (this.state.isLoading) return <Loader />;
-    if (this.state.errorData) return <ErrorPage {...this.state.errorData} />;
+      errorData,
+      isLoading,
+      article: { article_id, title, author, body, created_at, votes }
+    } = this.state;
+    if (isLoading) return <Loader />;
+    if (errorData) return <ErrorPage {...errorData} />;
 
     return (
       <div className="Article">

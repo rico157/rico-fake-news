@@ -20,7 +20,8 @@ export default class Comments extends Component {
   };
 
   componentDidMount() {
-    getCommentsByArticle(this.props.article_id)
+    const { article_id } = this.props;
+    getCommentsByArticle(article_id)
       .then(({ data: { comments } }) =>
         this.setState({ comments, isLoading: false })
       )
@@ -32,7 +33,9 @@ export default class Comments extends Component {
   };
 
   handleSubmit = () => {
-    postComment('weegembump', this.props.article_id, this.state.newComment)
+    const { article_id } = this.props;
+    const { newComment } = this.state;
+    postComment('weegembump', article_id, newComment)
       .then(({ data: { comment } }) => {
         const { author, body, created_at, comment_id } = comment;
         this.setState((prevState) => {
@@ -48,19 +51,20 @@ export default class Comments extends Component {
   };
 
   handleDelete = (comment_id) => {
-    deleteComment(comment_id).then(() =>
-      this.setState((prevState) => {
-        const copy = this.state.comments.filter(
-          (comment) => comment.comment_id !== comment_id
-        );
-
-        return { comments: copy };
-      })
-    );
+    const { comments } = this.state;
+    deleteComment(comment_id).then(() => {
+      const copy = comments.filter(
+        (comment) => comment.comment_id !== comment_id
+      );
+      this.setState({
+        comments: copy
+      });
+    });
   };
 
   render() {
-    if (this.state.isLoading) return <Loader />;
+    const { newComment, isLoading, comments } = this.state;
+    if (isLoading) return <Loader />;
     return (
       <div className="Comments">
         <h2>Comments</h2>
@@ -71,14 +75,14 @@ export default class Comments extends Component {
             placeholder="Write a comment..."
             multiline
             variant="outlined"
-            value={this.state.newComment}
+            value={newComment}
             onChange={this.handleChange}
           />
           <IconButton aria-label="send" onClick={this.handleSubmit}>
             <SendIcon />
           </IconButton>
         </form>
-        {this.state.comments.map((comment) => {
+        {comments.map((comment) => {
           const { author, body, created_at, comment_id, votes } = comment;
           return (
             <div key={comment_id} className="comment">

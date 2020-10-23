@@ -17,11 +17,15 @@ export default class TopicsSelector extends Component {
   }
 
   handleChange = (event) => {
-    this.props.updateTopic(event.target.value);
+    const { updateTopic } = this.props;
+    updateTopic(event.target.value);
   };
 
   render() {
-    if (this.state.isLoading) return <Loader />;
+    const { isLoading, topicList } = this.state;
+    const { topic } = this.props;
+
+    if (isLoading) return <Loader />;
     return (
       <div className="TopicsSelector">
         <FormControl variant="outlined" className="Topic-Menu">
@@ -29,7 +33,7 @@ export default class TopicsSelector extends Component {
           <Select
             labelId="Topic-Input-Select"
             id="Topic-Select"
-            value={this.props.topic}
+            value={topic}
             onChange={this.handleChange}
             label="Topics"
           >
@@ -37,18 +41,16 @@ export default class TopicsSelector extends Component {
               Home
             </MenuItem>
 
-            {this.state.topicList.map((topic) => {
+            {topicList.map(({ slug }) => {
               return (
                 <MenuItem
                   className="Topic-Item"
                   component={Link}
-                  to={`/articles?topic=${topic.slug}`}
-                  key={topic.slug}
-                  value={topic.slug}
+                  to={`/articles?topic=${slug}`}
+                  key={slug}
+                  value={slug}
                 >
-                  <span style={{ textTransform: 'capitalize' }}>
-                    {topic.slug}
-                  </span>
+                  <span style={{ textTransform: 'capitalize' }}>{slug}</span>
                 </MenuItem>
               );
             })}
