@@ -19,14 +19,10 @@ export default class Articles extends Component {
   };
 
   updateTopic = (topic) => {
-    if (topic === 'home') {
-      this.setState({
-        currentTopic: 'home',
-        currentVariant: { created_at: 'contained' }
-      });
-    } else {
-      this.setState({ currentTopic: topic });
-    }
+    this.setState({
+      currentTopic: topic,
+      currentVariant: { created_at: 'contained' }
+    });
   };
 
   updateVariant = (variant) => {
@@ -44,31 +40,43 @@ export default class Articles extends Component {
           params: { ...searchParams }
         });
       })
-      .catch(({ response: { status, data, statusText } }) =>
+      .catch((err) => {
+        console.log(err);
+        const {
+          response: { status, data, statusText }
+        } = err;
         this.setState({
           errorData: { status, msg: data.msg, statusText },
           isLoading: false
-        })
-      );
+        });
+      });
   }
 
   componentDidUpdate(prevProps) {
-    const currentParams = parse(this.props.location.search);
+    const { sort_by, topic } = parse(this.props.location.search);
+    // if (sort_by !== this.state.currentVariant) {
+    //   this.setState({ currentVariant: { [sort_by]: 'contained' } });
+    // }
     const prevParams = parse(prevProps.location.search);
-    if (
-      prevParams.sort_by !== currentParams.sort_by ||
-      prevParams.topic !== currentParams.topic
-    ) {
-      getArticles({ ...currentParams })
+    const newSort = prevParams.sort_by !== sort_by;
+    const newTopic = prevParams.topic !== topic;
+    if (newSort || newTopic) {
+      getArticles({ sort_by, topic })
         .then(({ data: { articles } }) => {
-          this.setState({ articles, isLoading: false });
+          this.setState({
+            articles,
+            isLoading: false
+          });
         })
-        .catch(({ response: { status, data, statusText } }) =>
+        .catch((err) => {
+          const {
+            response: { status, data, statusText }
+          } = err;
           this.setState({
             errorData: { status, msg: data.msg, statusText },
             isLoading: false
-          })
-        );
+          });
+        });
     }
   }
   render() {
@@ -79,7 +87,7 @@ export default class Articles extends Component {
       currentTopic,
       currentVariant
     } = this.state;
-    if (isLoading) return <Loader />;
+
     if (errorData) return <ErrorPage {...errorData} />;
 
     return (
@@ -90,10 +98,14 @@ export default class Articles extends Component {
           variant={currentVariant}
           topic={currentTopic}
         />
-        {articles.map((article) => {
-          const { article_id } = article;
-          return <ArticleCard key={article_id} {...article} />;
-        })}
+        {!isLoading ? (
+          articles.map((article) => {
+            const { article_id } = article;
+            return <ArticleCard key={article_id} {...article} />;
+          })
+        ) : (
+          <Loader />
+        )}
       </div>
     );
   }

@@ -15,8 +15,6 @@ function App() {
 
       <Router>
         <Articles path="/" />
-        <Articles path="/topic/:topic_id" />
-        <Articles path="/articles" />
         <Article path="/articles/:article_id" />
         <Comments path="/articles/:article_id/comments" />
         <ErrorPage default status="404" msg="Page not found" />

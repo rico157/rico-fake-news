@@ -2,30 +2,27 @@ import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import { getTopics } from '../utils/axios';
-import Loader from './common/Loader';
 
 export default class TopicsSelector extends Component {
   state = {
-    topicList: [],
-    isLoading: true
+    topics: []
   };
 
   componentDidMount() {
-    getTopics().then(({ data }) =>
-      this.setState({ topicList: data.topics, isLoading: false })
+    getTopics().then(({ data: { topics } }) =>
+      this.setState({ topics, isLoading: false })
     );
   }
 
-  handleChange = (event) => {
+  handleChange = ({ target }) => {
     const { updateTopic } = this.props;
-    updateTopic(event.target.value);
+    updateTopic(target.value);
   };
 
   render() {
-    const { isLoading, topicList } = this.state;
+    const { topics } = this.state;
     const { topic } = this.props;
 
-    if (isLoading) return <Loader />;
     return (
       <div className="TopicsSelector">
         <FormControl variant="outlined" className="Topic-Menu">
@@ -41,12 +38,12 @@ export default class TopicsSelector extends Component {
               Home
             </MenuItem>
 
-            {topicList.map(({ slug }) => {
+            {topics.map(({ slug }) => {
               return (
                 <MenuItem
                   className="Topic-Item"
                   component={Link}
-                  to={`/articles?topic=${slug}`}
+                  to={`/?topic=${slug}`}
                   key={slug}
                   value={slug}
                 >
