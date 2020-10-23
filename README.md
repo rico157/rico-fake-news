@@ -1,4 +1,55 @@
 
+#### Tech-Stack
+* Framework: [React.js](https://reactjs.org/)
+* CSS Framework: [MATERIAL-UI](https://material-ui.com/)
+* Back-end: [NC-News](https://rico-nc-api.herokuapp.com/)
+
+<!-- 
+#### TDD 
+* Testing Framework: [Jest](https://jestjs.io/) -->
+---
+### Requirements
+
+* [Node.js](https://nodejs.org/)
+
+## How to install
+
+Clone the repository
+
+```
+$ git clone https://github.com/rico157/rico-fake-news.git
+```
+
+Install all the node packages with the command:
+
+```
+$ npm i
+```
+
+Create/recreate the database with the command:
+
+```
+$ npm run setup-dbs
+```
+
+Insert data to the database with the command:
+
+```
+$ npm run seed
+```
+
+Start the server with the command:
+
+```
+$ npm start
+```
+
+Go to [http://localhost:3000/](http://localhost:3000/)
+
+
+
+
+
 ## To Do 
 ---
 - [x] view a list of all articles
@@ -19,10 +70,10 @@
 - [x] not be allowed to post a comment if I have not filled in all of the form boxes.
 ---
 - [x] use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).
-- [ ] follow the readme instructions to easily run the project locally.
-- [ ] find a link to the hosted version of the project in the readme. (use a placeholder if not yet hosted!)
+- [x] follow the readme instructions to easily run the project locally.
+- [x] find a link to the hosted version of the project in the readme. (use a placeholder if not yet hosted!)
 - [ ] find a link to the back-end repository of the project in the readme.
-- [ ] find a link to the hosted version of the back-end project in the readme.
+- [x] find a link to the hosted version of the back-end project in the readme.
 ---
 
 
