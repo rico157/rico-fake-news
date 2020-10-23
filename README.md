@@ -16,7 +16,7 @@
 ---
 - [x] see a 404 error if I go on a non-existent path/a path for a non-existent article/topic.
 - [x] see a 400 error if I go on a invalid article ID.
-- [ ] not be allowed to post a comment if I have not filled in all of the form boxes.
+- [x] not be allowed to post a comment if I have not filled in all of the form boxes.
 ---
 - [x] use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).
 - [ ] follow the readme instructions to easily run the project locally.
