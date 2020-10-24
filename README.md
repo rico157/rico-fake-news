@@ -1,12 +1,12 @@
 
 ##### Tech-Stack
 * Framework: [React.js](https://reactjs.org/)
-* CSS Framework: [MATERIAL-UI](https://material-ui.com/)
-* Back-end: [NC-News](https://rico-nc-api.herokuapp.com/)
+* CSS Framework: [Material-UI](https://material-ui.com/)
+* Back-end: [Live](https://rico-nc-news.herokuapp.com/) / [GitHub](https://github.com/rico157/rico-fake-news-api)
 
-<!-- 
+---
 ##### TDD 
-* Testing Framework: [Jest](https://jestjs.io/) -->
+* Testing Framework: [Jest](https://jestjs.io/) 
 ---
 ### Requirements
 
@@ -38,7 +38,7 @@ You will also see any lint errors in the console.
 
 ## Features
 ---
-- [x] view a list of all articles
+- [x] view a list of all articles 
 - [x] view a page for each topic with a list of related articles.
 - [x] view an individual article.
 - [x] view an individual article's comments.
@@ -58,11 +58,10 @@ You will also see any lint errors in the console.
 - [x] use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).
 - [x] follow the readme instructions to easily run the project locally.
 - [x] find a link to the hosted version of the project in the readme. (use a placeholder if not yet hosted!)
-- [ ] find a link to the back-end repository of the project in the readme.
+- [x] find a link to the back-end repository of the project in the readme.
 - [x] find a link to the hosted version of the back-end project in the readme.
 ---
 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
