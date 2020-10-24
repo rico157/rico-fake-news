@@ -44,7 +44,6 @@ export default class TopicsSelector extends Component {
   render() {
     const { topics } = this.state;
     const { topic } = this.props;
-    console.log(topic);
     return (
       <div className="TopicsSelector">
         <FormControl variant="outlined" className="Topic-Menu">
