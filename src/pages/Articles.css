@@ -1,10 +1,44 @@
 .Articles {
-    border-style: solid;
-    border-color: orange;
+    /* border-style: solid;
+    border-color: orange; */
     margin: 10px;
     margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.Articles-List {
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Articles-Link {
     text-decoration: none;
+}
+
+.Articles-Header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 800px) {
+    .Articles-Header {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .Articles-List {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }

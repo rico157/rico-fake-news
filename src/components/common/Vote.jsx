@@ -1,8 +1,9 @@
-import { Button } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import React, { Component } from 'react';
 import { patchVote } from '../../utils/axios';
 import './Vote.css';
-
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 export default class Vote extends Component {
   state = {
     userVote: null
@@ -33,9 +34,13 @@ export default class Vote extends Component {
   render() {
     return (
       <div className="Vote">
-        <Button onClick={() => this.handleVote(1)}>Up</Button>
-        <p>Rating: {this.state.userVote}</p>
-        <Button onClick={() => this.handleVote(-1)}>Down</Button>
+        <IconButton onClick={() => this.handleVote(1)}>
+          <ExpandLessIcon />
+        </IconButton>
+        <p>{this.state.userVote}</p>
+        <IconButton onClick={() => this.handleVote(-1)}>
+          <ExpandMoreIcon />
+        </IconButton>
       </div>
     );
   }

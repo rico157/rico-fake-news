@@ -92,16 +92,18 @@ export default class Comments extends Component {
               {comments.map((comment) => {
                 const { author, body, created_at, comment_id, votes } = comment;
                 return (
-                  <div key={comment_id} className="comment">
-                    <h3>{author}</h3>
-                    <p>{body}</p>
-                    <p>{formatDate(created_at)}</p>
-                    {author === user && (
-                      <Button onClick={() => this.handleDelete(comment_id)}>
-                        Delete
-                      </Button>
-                    )}
+                  <div class="Comment-Block">
                     <Vote votes={votes} comment_id={comment_id} />
+                    <div key={comment_id} className="comment">
+                      <h3>{author}</h3>
+                      <p>{body}</p>
+                      <p>{formatDate(created_at)}</p>
+                      {author === user && (
+                        <Button onClick={() => this.handleDelete(comment_id)}>
+                          Delete
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 );
               })}

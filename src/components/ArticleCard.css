@@ -1,21 +1,27 @@
 .Article-List-Card {
-    border-color: yellow;
-    margin: 10px;
+    /* border-color: yellow; */
+    margin: 1em;
     padding: 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    /* justify-content: center; */
     align-items: center;
+    border-radius: 7% !important;
+    width: 90%;
+    height: 350px;
 }
 
 .Article-List-Content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
     text-decoration: none;
 }
 
 
 .Articles-Card-Author {
     display: flex;
-    justify-content: center;
+    align-items: flex-start;
 }
 
 
@@ -25,5 +31,15 @@
 }
 
 .Comment_button_Link {
+
     text-decoration: none;
+    color: tomato;
+
+}
+
+@media screen and (min-width: 800px) {
+    .Article-List-Card {
+        width: 450px;
+        height: 350px;
+    }
 }

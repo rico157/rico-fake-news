@@ -1,6 +1,6 @@
 .Header {
-    border-style: solid;
-    border-color: teal;
+    /* border-style: solid;
+    border-color: teal; */
     margin: 10px;
 
 }
@@ -9,8 +9,8 @@
 
 
 .TopicsSelector {
-    border-style: solid;
-    border-color: rgb(0, 213, 199);
+    /* border-style: solid;
+    border-color: rgb(0, 213, 199); */
     margin: 10px;
     padding: 10px;
 
@@ -32,8 +32,8 @@
 
 
 .SortOptions {
-    border-style: solid;
-    border-color: rgb(0, 213, 199);
+    /* border-style: solid;
+    border-color: rgb(0, 213, 199); */
     margin: 10px;
     padding: 10px;
 }
@@ -41,4 +41,16 @@
 .User-Menu {
     width: 300px;
     margin: 10px;
+}
+
+@media screen and (min-width: 900px) {
+    .Header {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        align-items: center;
+        margin-left: 5%;
+    }
+
+
 }

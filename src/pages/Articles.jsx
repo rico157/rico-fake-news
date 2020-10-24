@@ -115,20 +115,24 @@ export default class Articles extends Component {
 
     return (
       <div className="Articles">
-        <TopicsSelector updateTopic={this.updateTopic} topic={currentTopic} />
-        <SortOptions
-          updateVariant={this.updateVariant}
-          variant={currentVariant}
-          topic={currentTopic}
-        />
-        {!isLoading ? (
-          articles.map((article) => {
-            const { article_id } = article;
-            return <ArticleCard key={article_id} {...article} />;
-          })
-        ) : (
-          <Loader />
-        )}
+        <div class="Articles-Header">
+          <TopicsSelector updateTopic={this.updateTopic} topic={currentTopic} />
+          <SortOptions
+            updateVariant={this.updateVariant}
+            variant={currentVariant}
+            topic={currentTopic}
+          />
+        </div>
+        <ul className="Articles-List">
+          {!isLoading ? (
+            articles.map((article) => {
+              const { article_id } = article;
+              return <ArticleCard key={article_id} {...article} />;
+            })
+          ) : (
+            <Loader />
+          )}
+        </ul>
       </div>
     );
   }

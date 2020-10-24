@@ -8,7 +8,7 @@ export default function SelectUser() {
 
   return (
     <div className="SelectUser">
-      <FormControl variant="outlined" className="User-Menu">
+      <FormControl className="User-Menu">
         <InputLabel id="User-Input-Select">Select User</InputLabel>
         <Select
           labelId="User-Input-Select"

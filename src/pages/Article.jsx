@@ -52,13 +52,17 @@ export default class Article extends Component {
     if (errorData) return <ErrorPage {...errorData} />;
 
     return (
-      <div className="Article">
-        <Author author={author} />
-        <h5>{formatDate(created_at)}</h5>
-        <h2>{title}</h2>
+      <div class="Article-Page">
+        <div className="Article">
+          <Vote votes={votes} article_id={article_id} />
+          <div class="Article-data">
+            <Author author={author} />
+            <h2>{title}</h2>
+            <h5>{formatDate(created_at)}</h5>
 
-        <p>{body}</p>
-        <Vote votes={votes} article_id={article_id} />
+            <p>{body}</p>
+          </div>
+        </div>
         <Comments article_id={article_id} />
       </div>
     );
