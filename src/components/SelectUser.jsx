@@ -3,7 +3,13 @@ import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 import UserContext from './UserContext';
 
 export default function SelectUser() {
-  const users = ['weegembump', 'grumpy19'];
+  const users = [
+    'weegembump',
+    'grumpy19',
+    'happyamy2016',
+    'jessjelly',
+    'tickle122'
+  ];
   const { user, changeUser } = React.useContext(UserContext);
 
   return (
