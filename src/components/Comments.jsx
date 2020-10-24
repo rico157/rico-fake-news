@@ -92,7 +92,7 @@ export default class Comments extends Component {
               {comments.map((comment) => {
                 const { author, body, created_at, comment_id, votes } = comment;
                 return (
-                  <div class="Comment-Block" key={comment_id}>
+                  <div className="Comment-Block" key={comment_id}>
                     <Vote votes={votes} comment_id={comment_id} />
                     <div className="comment">
                       <h3>{author}</h3>
