@@ -1,18 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Header.css';
 import { Button } from '@material-ui/core';
 import UserContext from '../UserContext';
 import SelectUser from '../SelectUser';
 
-export default function Header() {
-  const { user } = React.useContext(UserContext);
-  return (
-    <header className="Header">
-      {user && <p>Logged in: {user}</p>}
-      <SelectUser />
-      <Button href="/">
-        <h1>Rico NC News!</h1>
-      </Button>
-    </header>
-  );
+export default class Header extends Component {
+  state = { logToggle: false };
+  logButton = () => {
+    this.setState((prevState) => {
+      return { logToggle: !prevState.logToggle };
+    });
+  };
+
+  render() {
+    return (
+      <UserContext.Consumer>
+        {({ user }) => {
+          return (
+            <header className="Header">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.logButton}
+              >
+                Change User
+              </Button>
+              {this.state.logToggle && <SelectUser />}
+              {user && <p>Logged in: {user}</p>}
+              <Button href="/">
+                <h1>Rico NC News!</h1>
+              </Button>
+            </header>
+          );
+        }}
+      </UserContext.Consumer>
+    );
+  }
 }
