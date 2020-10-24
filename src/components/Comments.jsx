@@ -11,6 +11,7 @@ import {
 import Loader from './common/Loader';
 import { formatDate } from '../utils/utils';
 import Vote from './common/Vote';
+import UserContext from './UserContext';
 
 export default class Comments extends Component {
   state = {
@@ -32,19 +33,16 @@ export default class Comments extends Component {
     this.setState({ newComment: e.target.value });
   };
 
-  handleSubmit = () => {
-    const { article_id, user } = this.props;
+  handleSubmit = (user) => {
+    const { article_id } = this.props;
     const { newComment } = this.state;
-    postComment('user', article_id, newComment)
+    postComment(user, article_id, newComment)
       .then(({ data: { comment } }) => {
-        const { author, body, created_at, comment_id } = comment;
-        this.setState((prevState) => {
+        const newComment = { ...comment };
+        this.setState(({ comments }) => {
           return {
             newComment: '',
-            comments: [
-              { author, body, created_at, comment_id },
-              ...prevState.comments
-            ]
+            comments: [newComment, ...comments]
           };
         });
       })
@@ -64,48 +62,53 @@ export default class Comments extends Component {
   };
 
   render() {
-    const { newComment, isLoading, comments } = this.state;
-    const { user } = this.props;
-    const statWriting = newComment === '';
-    if (isLoading) return <Loader />;
     return (
-      <div className="Comments">
-        <h2>Comments</h2>
-        <form className="new-comment">
-          <TextField
-            id="outlined-textarea"
-            label=""
-            placeholder="Write a comment..."
-            multiline
-            variant="outlined"
-            value={newComment}
-            onChange={this.handleChange}
-          />
-          <IconButton
-            aria-label="send"
-            onClick={this.handleSubmit}
-            disabled={statWriting}
-          >
-            <SendIcon />
-          </IconButton>
-        </form>
-        {comments.map((comment) => {
-          const { author, body, created_at, comment_id, votes } = comment;
+      <UserContext.Consumer>
+        {({ user }) => {
+          const { newComment, isLoading, comments } = this.state;
+          const statWriting = newComment === '';
+          if (isLoading) return <Loader />;
           return (
-            <div key={comment_id} className="comment">
-              <h3>{author}</h3>
-              <p>{body}</p>
-              <p>{formatDate(created_at)}</p>
-              {author === 'user' && (
-                <Button onClick={() => this.handleDelete(comment_id)}>
-                  Delete
-                </Button>
-              )}
-              <Vote votes={votes} comment_id={comment_id} />
+            <div className="Comments">
+              <h2>Comments</h2>
+              <form className="new-comment">
+                <TextField
+                  id="outlined-textarea"
+                  label=""
+                  placeholder="Write a comment..."
+                  multiline
+                  variant="outlined"
+                  value={newComment}
+                  onChange={this.handleChange}
+                />
+                <IconButton
+                  aria-label="send"
+                  onClick={() => this.handleSubmit(user)}
+                  disabled={statWriting}
+                >
+                  <SendIcon />
+                </IconButton>
+              </form>
+              {comments.map((comment) => {
+                const { author, body, created_at, comment_id, votes } = comment;
+                return (
+                  <div key={comment_id} className="comment">
+                    <h3>{author}</h3>
+                    <p>{body}</p>
+                    <p>{formatDate(created_at)}</p>
+                    {author === user && (
+                      <Button onClick={() => this.handleDelete(comment_id)}>
+                        Delete
+                      </Button>
+                    )}
+                    <Vote votes={votes} comment_id={comment_id} />
+                  </div>
+                );
+              })}
             </div>
           );
-        })}
-      </div>
+        }}
+      </UserContext.Consumer>
     );
   }
 }

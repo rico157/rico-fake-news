@@ -1,28 +1,30 @@
 import React from 'react';
 import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
+import UserContext from './UserContext';
 
-export default function SelectUser(props) {
-  const { updateUser } = props;
+export default function SelectUser() {
   const users = ['weegembump', 'grumpy19'];
-
-  const handleChange = (e) => {
-    updateUser(e.target.value);
-  };
+  const { user, changeUser } = React.useContext(UserContext);
 
   return (
     <div className="SelectUser">
-      <FormControl variant="outlined" className="Topic-Menu">
-        <InputLabel id="User-Input-Select">Change User</InputLabel>
+      <FormControl variant="outlined" className="User-Menu">
+        <InputLabel id="User-Input-Select">Select User</InputLabel>
         <Select
           labelId="User-Input-Select"
           id="User-Select"
-          onChange={handleChange}
+          onClick={(e) => changeUser(e.target.value)}
           label="Users"
+          value={user}
         >
-          {users.map((user) => {
+          {users.map((userChoice) => {
             return (
-              <MenuItem className="user-Item" key={user} value={user}>
-                <span>{user}</span>
+              <MenuItem
+                className="user-Item"
+                key={userChoice}
+                value={userChoice}
+              >
+                <span>{userChoice}</span>
               </MenuItem>
             );
           })}
