@@ -38,33 +38,13 @@ export default class TopicsSelector extends Component {
 
   handleChange = ({ target }) => {
     const { updateTopic } = this.props;
-    updateTopic(target.value).catch((err) => {
-      if (err.response) {
-        const {
-          response: { status, data, statusText }
-        } = err;
-        this.setState({
-          errorData: { status, msg: data.msg, statusText },
-          isLoading: false
-        });
-      } else {
-        const status = '';
-        const msg = err.message;
-        const statusText = 'Something went wrong';
-
-        this.setState({
-          errorData: { status, msg, statusText },
-          isLoading: false
-        });
-      }
-      console.dir(err);
-    });
+    updateTopic(target.value);
   };
 
   render() {
     const { topics } = this.state;
     const { topic } = this.props;
-
+    console.log(topic);
     return (
       <div className="TopicsSelector">
         <FormControl variant="outlined" className="Topic-Menu">

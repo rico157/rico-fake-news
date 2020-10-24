@@ -40,34 +40,11 @@ export default class Articles extends Component {
           params: { ...searchParams }
         });
       })
-      .catch((err) => {
-        if (err.response) {
-          const {
-            response: { status, data, statusText }
-          } = err;
-          this.setState({
-            errorData: { status, msg: data.msg, statusText },
-            isLoading: false
-          });
-        } else {
-          const status = '';
-          const msg = err.message;
-          const statusText = 'Something went wrong';
-
-          this.setState({
-            errorData: { status, msg, statusText },
-            isLoading: false
-          });
-        }
-        console.dir(err);
-      });
+      .catch(this.errHandler);
   }
 
   componentDidUpdate(prevProps) {
     const { sort_by, topic } = parse(this.props.location.search);
-    // if (sort_by !== this.state.currentVariant) {
-    //   this.setState({ currentVariant: { [sort_by]: 'contained' } });
-    // }
     const prevParams = parse(prevProps.location.search);
     const newSort = prevParams.sort_by !== sort_by;
     const newTopic = prevParams.topic !== topic;
@@ -79,29 +56,32 @@ export default class Articles extends Component {
             isLoading: false
           });
         })
-        .catch((err) => {
-          if (err.response) {
-            const {
-              response: { status, data, statusText }
-            } = err;
-            this.setState({
-              errorData: { status, msg: data.msg, statusText },
-              isLoading: false
-            });
-          } else {
-            const status = '';
-            const msg = err.message;
-            const statusText = 'Something went wrong';
-
-            this.setState({
-              errorData: { status, msg, statusText },
-              isLoading: false
-            });
-          }
-          console.dir(err);
-        });
+        .catch(this.errHandler);
     }
   }
+
+  errHandler = (err) => {
+    if (err.response) {
+      const {
+        response: { status, data, statusText }
+      } = err;
+      this.setState({
+        errorData: { status, msg: data.msg, statusText },
+        isLoading: false
+      });
+    } else {
+      const status = '';
+      const msg = err.message;
+      const statusText = 'Something went wrong';
+
+      this.setState({
+        errorData: { status, msg, statusText },
+        isLoading: false
+      });
+    }
+    console.dir(err);
+  };
+
   render() {
     const {
       articles,
@@ -115,7 +95,7 @@ export default class Articles extends Component {
 
     return (
       <div className="Articles">
-        <div class="Articles-Header">
+        <div className="Articles-Header">
           <TopicsSelector updateTopic={this.updateTopic} topic={currentTopic} />
           <SortOptions
             updateVariant={this.updateVariant}
