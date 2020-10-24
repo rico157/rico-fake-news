@@ -33,9 +33,9 @@ export default class Comments extends Component {
   };
 
   handleSubmit = () => {
-    const { article_id } = this.props;
+    const { article_id, user } = this.props;
     const { newComment } = this.state;
-    postComment('weegembump', article_id, newComment)
+    postComment('user', article_id, newComment)
       .then(({ data: { comment } }) => {
         const { author, body, created_at, comment_id } = comment;
         this.setState((prevState) => {
@@ -65,6 +65,7 @@ export default class Comments extends Component {
 
   render() {
     const { newComment, isLoading, comments } = this.state;
+    const { user } = this.props;
     const statWriting = newComment === '';
     if (isLoading) return <Loader />;
     return (
@@ -95,7 +96,7 @@ export default class Comments extends Component {
               <h3>{author}</h3>
               <p>{body}</p>
               <p>{formatDate(created_at)}</p>
-              {author === 'weegembump' && (
+              {author === 'user' && (
                 <Button onClick={() => this.handleDelete(comment_id)}>
                   Delete
                 </Button>

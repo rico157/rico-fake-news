@@ -21,16 +21,25 @@ export default class Article extends Component {
         this.setState({ article, isLoading: false });
       })
       .catch((err) => {
+        if (err.response) {
+          const {
+            response: { status, data, statusText }
+          } = err;
+          this.setState({
+            errorData: { status, msg: data.msg, statusText },
+            isLoading: false
+          });
+        } else {
+          const status = '';
+          const msg = err.message;
+          const statusText = 'Something went wrong';
+
+          this.setState({
+            errorData: { status, msg, statusText },
+            isLoading: false
+          });
+        }
         console.dir(err);
-        const { status, data, statusText } = err.response;
-        this.setState({
-          errorData: {
-            status: status,
-            msg: data.msg,
-            statusText: statusText
-          },
-          isLoading: false
-        });
       });
   }
   render() {

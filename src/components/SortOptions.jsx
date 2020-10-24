@@ -24,7 +24,7 @@ export default function SortOptions(props) {
         </Button>
         <Button
           component={Link}
-          to={`/${query}sort_by=comment_count`}
+          to={`/${query}sort_by=articles.comment_count`}
           variant={comment_count}
           onClick={() => handleSort('comment_count')}
         >

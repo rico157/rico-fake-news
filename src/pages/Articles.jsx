@@ -41,14 +41,25 @@ export default class Articles extends Component {
         });
       })
       .catch((err) => {
-        console.log(err);
-        const {
-          response: { status, data, statusText }
-        } = err;
-        this.setState({
-          errorData: { status, msg: data.msg, statusText },
-          isLoading: false
-        });
+        if (err.response) {
+          const {
+            response: { status, data, statusText }
+          } = err;
+          this.setState({
+            errorData: { status, msg: data.msg, statusText },
+            isLoading: false
+          });
+        } else {
+          const status = '';
+          const msg = err.message;
+          const statusText = 'Something went wrong';
+
+          this.setState({
+            errorData: { status, msg, statusText },
+            isLoading: false
+          });
+        }
+        console.dir(err);
       });
   }
 
@@ -69,13 +80,25 @@ export default class Articles extends Component {
           });
         })
         .catch((err) => {
-          const {
-            response: { status, data, statusText }
-          } = err;
-          this.setState({
-            errorData: { status, msg: data.msg, statusText },
-            isLoading: false
-          });
+          if (err.response) {
+            const {
+              response: { status, data, statusText }
+            } = err;
+            this.setState({
+              errorData: { status, msg: data.msg, statusText },
+              isLoading: false
+            });
+          } else {
+            const status = '';
+            const msg = err.message;
+            const statusText = 'Something went wrong';
+
+            this.setState({
+              errorData: { status, msg, statusText },
+              isLoading: false
+            });
+          }
+          console.dir(err);
         });
     }
   }

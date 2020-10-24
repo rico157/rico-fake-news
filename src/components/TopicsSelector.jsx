@@ -9,14 +9,56 @@ export default class TopicsSelector extends Component {
   };
 
   componentDidMount() {
-    getTopics().then(({ data: { topics } }) =>
-      this.setState({ topics, isLoading: false })
-    );
+    getTopics()
+      .then(({ data: { topics } }) =>
+        this.setState({ topics, isLoading: false })
+      )
+      .catch((err) => {
+        if (err.response) {
+          const {
+            response: { status, data, statusText }
+          } = err;
+          this.setState({
+            errorData: { status, msg: data.msg, statusText },
+            isLoading: false
+          });
+        } else {
+          const status = '';
+          const msg = err.message;
+          const statusText = 'Something went wrong';
+
+          this.setState({
+            errorData: { status, msg, statusText },
+            isLoading: false
+          });
+        }
+        console.dir(err);
+      });
   }
 
   handleChange = ({ target }) => {
     const { updateTopic } = this.props;
-    updateTopic(target.value);
+    updateTopic(target.value).catch((err) => {
+      if (err.response) {
+        const {
+          response: { status, data, statusText }
+        } = err;
+        this.setState({
+          errorData: { status, msg: data.msg, statusText },
+          isLoading: false
+        });
+      } else {
+        const status = '';
+        const msg = err.message;
+        const statusText = 'Something went wrong';
+
+        this.setState({
+          errorData: { status, msg, statusText },
+          isLoading: false
+        });
+      }
+      console.dir(err);
+    });
   };
 
   render() {
