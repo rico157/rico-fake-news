@@ -11,7 +11,7 @@ import UserContext from './components/UserContext';
 
 export default class App extends Component {
   state = {
-    user: '',
+    user: 'weegembump',
     changeUser: (user) => {
       this.setState({ user });
     }
