@@ -76,10 +76,6 @@ export default class TopicsSelector extends Component {
             onChange={this.handleChange}
             label="Topics"
           >
-            <MenuItem component={Link} to="/" value={'home'}>
-              Home
-            </MenuItem>
-
             {topics.map(({ slug }) => {
               return (
                 <MenuItem

@@ -14,7 +14,7 @@ export default class Articles extends Component {
     isLoading: true,
     errorData: null,
     params: {},
-    currentTopic: 'home',
+    currentTopic: '',
     currentVariant: { created_at: 'contained' }
   };
 
