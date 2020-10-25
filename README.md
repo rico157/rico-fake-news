@@ -1,4 +1,8 @@
-
+**Rico Fake News - React App**
+----
+  Rico Fake News is a React App that was built as final **frontend** project during the [Remote Coding Bootcamp](https://northcoders.com/remote-coding-bootcamp) at Northcoders
+  
+  ---
 ##### Tech-Stack
 * Framework: [React.js](https://reactjs.org/)
 * CSS Framework: [Material-UI](https://material-ui.com/)
