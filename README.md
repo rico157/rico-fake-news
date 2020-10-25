@@ -1,7 +1,9 @@
-**Rico Fake News - React App**
-----
+# **Rico Fake News - React App** | [Live Host](https://rico-fake-news.netlify.app/) 👀
+
+
   Rico Fake News is a React App that was built as final **frontend** project during the [Remote Coding Bootcamp](https://northcoders.com/remote-coding-bootcamp) at Northcoders
   
+
   ---
 ##### Tech-Stack
 * Framework: [React.js](https://reactjs.org/)
