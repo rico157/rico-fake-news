@@ -5,7 +5,7 @@ import UserContext from '../UserContext';
 import SelectUser from '../SelectUser';
 
 export default class Header extends Component {
-  state = { logToggle: false };
+  state = { logToggle: true };
   logButton = () => {
     this.setState((prevState) => {
       return { logToggle: !prevState.logToggle };
@@ -18,17 +18,19 @@ export default class Header extends Component {
         {({ user }) => {
           return (
             <header className="Header">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.logButton}
-              >
-                Change User
-              </Button>
-              {this.state.logToggle && <SelectUser />}
-              {user && <p>Logged in: {user}</p>}
+              <div className="logDiv">
+                {/* <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.logButton}
+                >
+                  Change User
+                </Button> */}
+                {this.state.logToggle && <SelectUser />}
+              </div>
+              {/* {user && <p>Logged in: {user}</p>} */}
               <Button href="/">
-                <h1>Rico NC News!</h1>
+                <h1> Rico's News 👇</h1>
               </Button>
             </header>
           );

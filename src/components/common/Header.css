@@ -1,8 +1,18 @@
 .Header {
-    /* border-style: solid;
-    border-color: teal; */
-    margin: 10px;
 
+    padding-left: 5em;
+    padding-right: 5em;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.Header h1 {
+    font-size: 3em;
+    font-weight: 200;
 }
 
 
@@ -30,6 +40,10 @@
     text-transform: capitalize;
 }
 
+.logDiv {
+    display: flex;
+    flex-direction: column;
+}
 
 .SortOptions {
     /* border-style: solid;
@@ -43,13 +57,17 @@
     margin: 10px;
 }
 
+.SelectUser {
+    padding-bottom: 40px;
+}
+
 @media screen and (min-width: 900px) {
     .Header {
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
         align-items: center;
-        margin-left: 5%;
+        /* margin-left: 5%; */
     }
 
 
