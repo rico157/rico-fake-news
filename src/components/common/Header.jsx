@@ -30,7 +30,13 @@ export default class Header extends Component {
               </div>
               {/* {user && <p>Logged in: {user}</p>} */}
               <Button href="/">
-                <h1> Rico's News 👇</h1>
+                <h1>
+                  {' '}
+                  Rico's News{' '}
+                  <span role="img" aria-label="down">
+                    👇
+                  </span>
+                </h1>
               </Button>
             </header>
           );
