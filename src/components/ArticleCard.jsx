@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from '@reach/router';
 import './ArticleCard.css';
 import { Badge, Card, CardContent } from '@material-ui/core';
@@ -17,8 +17,17 @@ export default function ArticleCard(props) {
     votes
   } = props;
 
+  const [state, setState] = useState({
+    raised: false
+  });
+
   return (
-    <Card raised={true} className="Article-List-Card">
+    <Card
+      raised={state.raised}
+      className="Article-List-Card"
+      onMouseOver={() => setState({ raised: true })}
+      onMouseOut={() => setState({ raised: false })}
+    >
       <Vote votes={votes} article_id={article_id} />
       <CardContent className="Article-List-Content">
         <div className="Articles-Card-Author" color="textSecondary">
