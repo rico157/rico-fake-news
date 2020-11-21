@@ -1,4 +1,6 @@
 # **Rico Fake News - React App** | [Live Host](https://rico-fake-news.netlify.app/) 👀
+## Back End: [Live API](https://rico-nc-news.herokuapp.com/) / [GitHub](https://github.com/rico157/rico-fake-news-api)
+
 
 
   Rico Fake News is a React App that was built as final **frontend** project during the [Remote Coding Bootcamp](https://northcoders.com/remote-coding-bootcamp) at Northcoders
@@ -7,9 +9,10 @@
   ---
 ### Tech-Stack
 * Framework: [React.js](https://reactjs.org/)
-* CSS Framework: [Material-UI](https://material-ui.com/)
+* UI Library: [Material-UI](https://material-ui.com/)
 * Back-end: [Live](https://rico-nc-news.herokuapp.com/) / [GitHub](https://github.com/rico157/rico-fake-news-api)
-
+  - Server: [express.js](https://expressjs.com/)
+  - Database: [PostgreSQL](https://www.postgresql.org/) / [Knex.js](http://knexjs.org/)
 ---
 ### TDD 
 * Testing Framework: [Jest](https://jestjs.io/) 
